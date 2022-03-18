@@ -1,2 +1,2 @@
 # NotaBene
-Note oard
+Note Board

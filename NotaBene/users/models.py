@@ -14,14 +14,12 @@ class Users(models.Model):
 
     
 class Docs(models.Model):
-    idOwner=models.IntegerField()
+    idOwner=models.ForeignKey(Users, on_delete = models.CASCADE)
     docName=models.CharField(max_length=45)
     state=models.BooleanField(default=True)
     content=models.FileField(upload_to='files/')    
 
 
-class Docs_Users(models.Model):
-    Docs_id=models.IntegerField()
-    Users_id=models.CharField(max_length=45)
-    state=models.BooleanField(default=True)
-    content=models.FileField(upload_to='files/')    
+class DocsUsers(models.Model):
+    idDocs = models.ForeignKey(Docs, on_delete = models.CASCADE, related_name = "doc")
+    idUsers = models.ForeignKey(Users, on_delete = models.CASCADE, related_name = "users")
